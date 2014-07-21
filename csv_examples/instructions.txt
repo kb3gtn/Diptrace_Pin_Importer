@@ -1,0 +1,30 @@
+Generial Instructions:
+Using a spread sheet tool (Excel or openoffice Calc) generate a spreadsheet with 3 columns {Pin Name,Pin,Sub Part}
+This should be used as the first row in your spread sheet.
+
+Now fill in the information for your part into the spreadsheet.
+Sort the spread sheet by Sub Part feild.  (not nescessary, but makes the part generation in order)
+Save the spread sheet as comma sperated value file. (.csv)  Make sure you when you save it, you tell the tool not to
+wrap text strings with quotes (").  This will break in input parser..
+
+In open office calc, you need to check the "edit filter operations" box in the save dialog, and delete the (") in the text delimiter entry.
+
+
+Data format requirements:
+
+The input parser assumes the following 2 things about pin names:
+1) there are no spaces in the names.
+2) strings are not encompessed by quotes ("pin_name" = fail, pin_name = pass)
+
+There are 3 columns in the .csv input file.
+1) This is the pin name string.. anything but "`' are allowed. (Though dip trace may add nother constraints..)
+2) The pin number is interperated as a string in this program, can be anything byt "`'.
+3) This last group contains a number, this is is the sub part group you want this pin to be placed in.
+   the grouping is used when making multi block components.  If not using, just asign everything to group 1.
+   
+   
+
+There is a spartan 6 example .csv file include in Git for this project, you can use it to understand the formating requirments.
+
+After you run the tool, you will get a .asc file.  This is a dip-trace ascii interchange file, import this file using dip trace component editor.
+
